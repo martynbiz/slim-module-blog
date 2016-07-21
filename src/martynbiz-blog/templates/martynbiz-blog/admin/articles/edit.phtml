@@ -1,0 +1,120 @@
+<?php $this->layout('layouts/admin'); ?>
+
+<?php $this->section('content') ?>
+    <ol class="breadcrumb">
+        <li><a href="/admin"><?= $this->translate('admin_link') ?></a></li>
+        <li><a href="/admin/articles"><?= $this->translate('articles_link') ?></a></li>
+        <li><a href="/admin/articles/<?= $this->article->id ?>"><?= $this->article->title ?></a></li>
+        <li class="active"><?= $this->translate('edit_draft_link') ?></li>
+    </ol>
+
+    <form method="post" action="/admin/articles/<?= $this->article->id ?>" enctype="multipart/form-data">
+
+    <div class="buttons">
+        <div class="col-md-6 hidden-s hidden-xs">
+            &nbsp;
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="/admin/articles/<?= $this->article->id ?>" class="btn btn-default"><?= $this->translate('cancel_link') ?></a>
+            <button type="submit" class="btn btn-default"><?= $this->translate('save_link') ?></button>
+            <?php if ($this->currentUser->isContributor()): ?>
+                <button type="submit" name="status" value="1" class="btn btn-primary"><?= $this->translate('submit_link') ?></button>
+            <?php endif ?>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="homebox">
+            <div class="body">
+                <h3><label for="title"><?= $this->translate('common_title') ?></label></h3>
+
+                <div class="form-group">
+                    <input type="text" value="<?= $this->article->title ?>" class="form-control" name="title" id="title" placeholder="<?= $this->translate('common_title') ?>">
+                </div>
+            </div>
+        </div>
+
+        <div class="homebox">
+            <div class="body">
+                <h3><label for="content"><?= $this->translate('common_content') ?></label></h3>
+
+                <div class="form-group">
+                    <textarea id="content" name="content" class="form-control ckeditor" rows="10"><?= $this->article->content ?></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="homebox">
+            <div class="body">
+                <h3><?= $this->translate('common_tags') ?></h3>
+
+                <?php if ($this->tags): ?>
+                    <div class="form-group">
+                        <ul class="tags">
+                            <?php foreach ($this->tags as $tag): ?>
+                                <li><label><input type="checkbox" name="tags[]" value="<?= $tag->id ?>" <?php if ($this->article->has($tag)): ?> checked="checked"<?php endif ?>)> <?= $tag->name ?><label></li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- <div class="homebox">
+            <div class="body">
+                <h3><?= $this->translate('common_photos') ?></h3>
+
+                <?php if ($this->article->photos): ?>
+                    <ul class="photo-list sortable">
+                        <?php foreach ($this->article->photos as $photo): ?>
+                            <li class="col-md-4">
+                                <img src="/photos<?= $photo->getCachedPath('x100') ?>" class="photo img-responsive">
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                <?php endif ?>
+
+                <div class="col-md-12">
+                    <hr>
+                </div>
+
+                <div class="form-group">
+                    <input type="file" name="photos[]"><br>
+                    <input type="file" name="photos[]"><br>
+                    <input type="file" name="photos[]"><br>
+                    <input type="file" name="photos[]"><br>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <input type="hidden" name="_METHOD" value="PUT">
+
+    </form>
+<?php $this->replace() ?>
+
+<?php $this->section('scripts') ?>
+    <script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+    <script>
+        // CKEDITOR.replace( 'content' );
+
+        CKEDITOR.replaceAll( function( textarea, config ) {
+console.log('Hi');
+            // Create an element based on a native DOM element, check if it has "js-ckeditor" class
+            if ( new CKEDITOR.dom.element( textarea ).hasClass( 'ckeditor' ) ) {
+
+                //Copies the properties from one object to another (in this case, config). By default, properties already present in the target object are not overwritten.
+                CKEDITOR.tools.extend( config, {
+                    customConfig: '/js/ckeditor/config.js'
+                } );
+
+                CKEDITOR.plugins.addExternal('simpleuploads', '/js/ckeditor/plugins/simpleuploads/');
+
+                return true;
+            }
+
+            return false;
+        } );
+    </script>
+<?php $this->append() ?>

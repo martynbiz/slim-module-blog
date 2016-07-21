@@ -1,0 +1,103 @@
+<?php $this->layout('layouts/main'); ?>
+
+<?php $this->section('content') ?>
+    <div class="homebox">
+        <div class="col-md-4 image">
+          <div id="carousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+                <li data-target="#carousel" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <?php foreach ($this->carouselPhotos as $i => $photo): ?>
+                    <div class="item<?php if ($i == 0): ?> active<?php endif; ?>">
+                        <a href="#"><img src="/photos<?= $photo->getCachedPath('460x345') ?>" alt="Chania" width="460" height="345"></a>
+                    </div>
+                <?php endforeach ?>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only"><?= $this->translate('carousel_previous_link') ?></span>
+            </a>
+            <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only"><?= $this->translate('carousel_next_link') ?></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-8 body">
+            <h1><?= $this->translate('home_welcome_header') ?></h1>
+            <p><?= $this->translate('home_welcome_intro') ?></p>
+            <hr>
+            <ul class="tags">
+                <li><a href="#"><?= $this->translate('about') ?></a></li>
+                <li><a href="#"><?= $this->translate('contact') ?></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <?php foreach ($this->articles as $article): ?>
+                <div class="homebox">
+                    <?php if ($photo = $article->getCoverPhoto()): ?>
+                        <div class="col-md-3 image">
+                            <img src="/photos<?= $photo->getCachedPath('300x') ?>" class="img-responsive">
+                        </div>
+                    <?php endif; ?>
+                    <div class="col-md-9 body">
+                        <h2><a href="<?= $this->pathFor('articles_show', ['id' => $article->id]) ?>"><?= $article->title ?></a></h2>
+                        <p><?= substr(strip_tags($article->content), 0, 250) ?>...</p>
+                        <p class="small"><?= $this->translate('articles_written_by') ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+            <a href="<?= $this->pathFor('articles') ?>" class="btn btn-default">More articles</a>
+        </div>
+        <div class="col-md-4">
+            <div class="homebox">
+                <div class="col-md-12 body">
+            		<form method="get" action="<?= $this->pathFor('articles') ?>">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button"><i class="glyphicon glyphicon-search"></i>&nbsp;</button>
+                            </span>
+                        </div>
+            		</form>
+                </div>
+            </div>
+
+            <div class="homebox">
+                <div class="col-md-12 body">
+                    <h3><?= $this->translate('tags') ?></h3>
+
+                    <ul class="tags">
+                        <li><a href="#">Tag</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="homebox">
+                <div class="col-md-12 body">
+                    <h3><?= $this->translate('featured') ?></h3>
+
+                    <ol class="featured">
+                        <li><a href="#">A Bootstrap/LESS work-flow</a></li>
+                        <li><a href="#">Deploying with Git</a></li>
+                        <li><a href="#">Karaoke on Rails!</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php $this->replace() ?>

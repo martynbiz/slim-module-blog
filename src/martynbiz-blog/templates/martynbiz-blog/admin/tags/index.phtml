@@ -1,0 +1,36 @@
+<?php $this->layout('layouts/admin'); ?>
+
+<?php $this->section('content') ?>
+    <ol class="breadcrumb">
+        <li><a href="/admin"><?= $this->translate('admin_link') ?></a></li>
+        <li class="active"><?= $this->translate('tags_link') ?></li>
+    </ol>
+
+    <div class="buttons">
+        <div class="col-md-6 hidden-s hidden-xs">
+            &nbsp;
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="/admin/tags/create" class="btn btn-default"><?= $this->translate('new_tag') ?></a>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Created</th>
+            <th>Public</th>
+        </tr>
+        <?php foreach ($this->tags as $tag): ?>
+            <tr>
+                <td><a href="<?= $this->pathFor('admin_tags_edit', [ 'id' => $tag->id ]) ?>"><?= $tag->name ?></td>
+                <td><?= $tag->slug ?></td>
+                <td><?= $tag->created_at ?></td>
+                <td><?= $tag->public ?></td>
+            </tr>
+        <?php endforeach ?>
+    </table>
+
+    <?= $this->insert('blog/partials/pagination_links') ?>
+<?php $this->replace() ?>

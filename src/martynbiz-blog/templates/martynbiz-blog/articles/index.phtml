@@ -1,0 +1,67 @@
+<?php $this->layout('layouts/main'); ?>
+
+<?php $this->section('content') ?>
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb" style="margin-bottom: 1em;">
+                <li><a href="<?= $this->pathFor('home') ?>">Home</a></li>
+                <li class="active">Articles</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <?php foreach ($this->articles as $article): ?>
+                <div class="homebox">
+                    <?php if ($photo = $article->getCoverPhoto()): ?>
+                        <div class="col-md-3 image">
+                            <img src="/photos<?= $photo->getCachedPath('300x') ?>" class="img-responsive">
+                        </div>
+                    <?php endif; ?>
+                    <div class="col-md-9 body">
+                        <h2><a href="<?= $this->pathFor('articles_show', ['id' => $article->id]) ?>"><?= $article->title ?></a></h2>
+                        <p><?= substr(strip_tags($article->content), 0, 250) ?>...</p>
+                        <p class="small"><?= $this->translate('articles_written_by') ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="col-md-4">
+            <div class="homebox">
+                <div class="col-md-12 body">
+                    <form method="get" action="<?= $this->pathFor('articles') ?>">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button"><i class="glyphicon glyphicon-search"></i>&nbsp;</button>
+                            </span>
+                        </div>
+            		</form>
+                </div>
+            </div>
+
+            <div class="homebox">
+                <div class="col-md-12 body">
+                    <h3>Tags</h3>
+
+                    <ul class="tags">
+                        <li><a href="/tag">Tag</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="homebox">
+                <div class="col-md-12 body">
+                    <h3>Featured</h3>
+
+                    <ol class="featured">
+                        <li><a href="#">A Bootstrap/LESS work-flow</a></li>
+                        <li><a href="#">Deploying with Git</a></li>
+                        <li><a href="#">Karaoke on Rails!</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php $this->replace() ?>
