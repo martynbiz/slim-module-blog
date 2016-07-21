@@ -16,9 +16,9 @@ return [
 
         'mongo' => [
             'classmap' => [
-                'articles' => 'MartynBiz\\Blog\\Model\\Article',
-                'photos' => 'MartynBiz\\Blog\\Model\\Photo',
-                'tags' => 'MartynBiz\\Blog\\Model\\Tag',
+                'articles' => 'MartynBiz\\Slim\\Modules\\Blog\\Model\\Article',
+                'photos' => 'MartynBiz\\Slim\\Modules\\Blog\\Model\\Photo',
+                'tags' => 'MartynBiz\\Slim\\Modules\\Blog\\Model\\Tag',
             ],
         ],
     ],

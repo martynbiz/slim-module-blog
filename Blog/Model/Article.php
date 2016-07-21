@@ -6,7 +6,7 @@ use MartynBiz\Mongo\Mongo;
 use MartynBiz\Slim\Modules\Blog\Utils;
 use MartynBiz\Slim\Modules\Blog\Model\Tag;
 use MartynBiz\Slim\Modules\Blog\Model\Photo;
-use Auth\Model\User;
+use MartynBiz\Slim\Modules\Auth\Model\User;
 
 use MartynBiz\Slim\Modules\Core\Model\Base;
 
