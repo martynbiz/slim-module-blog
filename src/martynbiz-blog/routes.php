@@ -6,7 +6,7 @@ use MartynBiz\Slim\Modules\Auth\Model\User;
 
 $container = $app->getContainer();
 
-$app->get('/', '\MartynBiz\Slim\Modules\Slim\Modules\Blog\Controller\IndexController:index')->setName('home');
+$app->get('/', '\MartynBiz\Slim\Modules\Blog\Controller\IndexController:index')->setName('home');
 
 // TODO move these to another module
 $app->get('/portfolio', '\MartynBiz\Slim\Modules\Blog\Controller\ArticlesController:portfolio')->setName('portfolio');
