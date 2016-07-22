@@ -7,8 +7,8 @@ use MartynBiz\Slim\Module\Blog\Utils;
 use MartynBiz\Slim\Module\Blog\Model\Tag;
 use MartynBiz\Slim\Module\Blog\Model\Photo;
 use MartynBiz\Slim\Module\Auth\Model\User;
-
 use MartynBiz\Slim\Module\Core\Model\Base;
+use MartynBiz\Helpers;
 
 /**
  *
@@ -75,7 +75,7 @@ class Article extends Base
     public function setTitle($value)
     {
         // set slug too
-        $this->data['slug'] = Utils::slugify($value);
+        $this->data['slug'] = Helpers\String\slugify($value);
 
         return $value;
     }
