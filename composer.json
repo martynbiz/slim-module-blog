@@ -15,7 +15,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "MartynBiz\\Slim\\Modules\\Blog\\": "src/"
+            "MartynBiz\\Slim\\Module\\Blog\\": "src/"
         }
     },
     "require": {

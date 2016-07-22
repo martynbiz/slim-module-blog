@@ -1,14 +1,14 @@
 <?php
 
-namespace MartynBiz\Slim\Modules\Blog\Model;
+namespace MartynBiz\Slim\Module\Blog\Model;
 
 use MartynBiz\Mongo\Mongo;
-use MartynBiz\Slim\Modules\Blog\Utils;
-use MartynBiz\Slim\Modules\Blog\Model\Tag;
-use MartynBiz\Slim\Modules\Blog\Model\Photo;
-use MartynBiz\Slim\Modules\Auth\Model\User;
+use MartynBiz\Slim\Module\Blog\Utils;
+use MartynBiz\Slim\Module\Blog\Model\Tag;
+use MartynBiz\Slim\Module\Blog\Model\Photo;
+use MartynBiz\Slim\Module\Auth\Model\User;
 
-use MartynBiz\Slim\Modules\Core\Model\Base;
+use MartynBiz\Slim\Module\Core\Model\Base;
 
 /**
  *

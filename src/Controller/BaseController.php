@@ -1,7 +1,7 @@
 <?php
-namespace MartynBiz\Slim\Modules\Blog\Controller;
+namespace MartynBiz\Slim\Module\Blog\Controller;
 
-class BaseController extends \MartynBiz\Slim\Modules\Auth\Controller\BaseController
+class BaseController extends \MartynBiz\Slim\Module\Auth\Controller\BaseController
 {
     /**
      * Get the options for the query (skip, limit)

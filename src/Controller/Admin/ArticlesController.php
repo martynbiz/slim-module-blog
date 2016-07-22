@@ -1,12 +1,12 @@
 <?php
-namespace MartynBiz\Slim\Modules\Blog\Controller\Admin;
+namespace MartynBiz\Slim\Module\Blog\Controller\Admin;
 
 use MartynBiz\Mongo\Mongo;
-use MartynBiz\Slim\Modules\Blog\Model\Article;
-use MartynBiz\Slim\Modules\Blog\Model\Photo;
-use MartynBiz\Slim\Modules\Blog\Exception\PermissionDenied as PermissionDeniedException;
+use MartynBiz\Slim\Module\Blog\Model\Article;
+use MartynBiz\Slim\Module\Blog\Model\Photo;
+use MartynBiz\Slim\Module\Blog\Exception\PermissionDenied as PermissionDeniedException;
 
-use MartynBiz\Slim\Modules\Blog\Controller\BaseController;
+use MartynBiz\Slim\Module\Blog\Controller\BaseController;
 
 class ArticlesController extends BaseController
 {

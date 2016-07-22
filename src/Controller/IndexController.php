@@ -1,5 +1,5 @@
 <?php
-namespace MartynBiz\Slim\Modules\Blog\Controller;
+namespace MartynBiz\Slim\Module\Blog\Controller;
 
 class IndexController extends BaseController
 {

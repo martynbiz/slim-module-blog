@@ -3,7 +3,7 @@
  * A mockable replacement for file system functions
  */
 
-namespace MartynBiz\Slim\Modules\Blog;
+namespace MartynBiz\Slim\Module\Blog;
 
 class Utils
 {

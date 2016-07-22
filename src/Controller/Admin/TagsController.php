@@ -1,9 +1,9 @@
 <?php
-namespace MartynBiz\Slim\Modules\Blog\Controller\Admin;
+namespace MartynBiz\Slim\Module\Blog\Controller\Admin;
 
-use MartynBiz\Slim\Modules\Blog\Model\Tag;
-use MartynBiz\Slim\Modules\Blog\Exception\PermissionDenied as PermissionDeniedException;
-use MartynBiz\Slim\Modules\Blog\Controller\BaseController;
+use MartynBiz\Slim\Module\Blog\Model\Tag;
+use MartynBiz\Slim\Module\Blog\Exception\PermissionDenied as PermissionDeniedException;
+use MartynBiz\Slim\Module\Blog\Controller\BaseController;
 
 class TagsController extends BaseController
 {

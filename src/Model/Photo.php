@@ -3,9 +3,9 @@
  * @author Martyn Bissett
  */
 
-namespace MartynBiz\Slim\Modules\Blog\Model;
+namespace MartynBiz\Slim\Module\Blog\Model;
 
-use MartynBiz\Slim\Modules\Core\Model\Base;
+use MartynBiz\Slim\Module\Core\Model\Base;
 
 class Photo extends Base
 {

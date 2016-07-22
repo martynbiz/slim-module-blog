@@ -3,7 +3,7 @@
  * A mockable replacement for gd image functions of this slim3-module
  */
 
-namespace MartynBiz\Slim\Modules\Blog;
+namespace MartynBiz\Slim\Module\Blog;
 
 class Image
 {

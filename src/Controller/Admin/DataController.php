@@ -1,22 +1,13 @@
 <?php
-namespace MartynBiz\Slim\Modules\Blog\Controller\Admin;
+namespace MartynBiz\Slim\Module\Blog\Controller\Admin;
 
-use MartynBiz\Slim\Modules\Blog\Utils;
-use MartynBiz\Slim\Modules\Blog\Exception\PermissionDenied;
+use MartynBiz\Slim\Module\Blog\Utils;
+use MartynBiz\Slim\Module\Blog\Exception\PermissionDenied;
 
-use MartynBiz\Slim\Modules\Blog\Controller\BaseController;
+use MartynBiz\Slim\Module\Blog\Controller\BaseController;
 
 class DataController extends BaseController
 {
-    // public function init()
-    // {
-    //     // only admin can do anything here
-    //     $currentUser = $this->get('auth')->getCurrentUser();
-    //     if (! $currentUser->isAdmin() ) {
-    //         throw new PermissionDenied('Permission denied to manage tags.');
-    //     }
-    // }
-
     public function import($request, $response, $args)
     {
         if ($this->request->isPost()) {

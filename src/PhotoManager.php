@@ -4,7 +4,7 @@
  * generating photo paths
  */
 
-namespace MartynBiz\Slim\Modules\Blog;
+namespace MartynBiz\Slim\Module\Blog;
 
 use MartynBiz\Blog\Image;
 use MartynBiz\Blog\FileSystem;
