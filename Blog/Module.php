@@ -1,5 +1,5 @@
 <?php
-namespace MartynBiz\Slim\Modules\Core;
+namespace MartynBiz\Slim\Modules\Blog;
 
 use Slim\App;
 use Slim\Container;
@@ -7,8 +7,9 @@ use Slim\Http\Headers;
 use MartynBiz\Mongo\Connection;
 use MartynBiz\Slim\Modules\Core\Http\Request;
 use MartynBiz\Slim\Modules\Core\Http\Response;
+use MartynBiz\Slim\Module\ModuleInterface;
 
-class Module
+class Module implements ModuleInterface
 {
     /**
      * Get config array for this module
@@ -17,29 +18,29 @@ class Module
     public function initDependencies(Container $container)
     {
         $container['blog.file_system'] = function ($c) {
-            return new MartynBiz\Slim\Modules\Blog\FileSystem();
+            return new \MartynBiz\Slim\Modules\Blog\FileSystem();
         };
 
         $container['blog.image'] = function ($c) {
-            return new MartynBiz\Slim\Modules\Blog\Image();
+            return new \MartynBiz\Slim\Modules\Blog\Image();
         };
 
         $container['blog.photo_manager'] = function ($c) {
-            return new MartynBiz\Slim\Modules\Blog\PhotoManager($c['blog.image'], $c['blog.file_system']);
+            return new \MartynBiz\Slim\Modules\Blog\PhotoManager($c['blog.image'], $c['blog.file_system']);
         };
 
         // models
         $container['blog.model.article'] = function ($c) {
-            return new MartynBiz\Slim\Modules\Blog\Model\Article();
+            return new \MartynBiz\Slim\Modules\Blog\Model\Article();
         };
         $container['blog.model.tag'] = function ($c) {
-            return new MartynBiz\Slim\Modules\Blog\Model\Tag();
+            return new \MartynBiz\Slim\Modules\Blog\Model\Tag();
         };
         $container['blog.model.photo'] = function ($c) {
-            return new MartynBiz\Slim\Modules\Blog\Model\Photo();
+            return new \MartynBiz\Slim\Modules\Blog\Model\Photo();
         };
     }
-
+    
     /**
      * Initiate app middleware (route middleware should go in initRoutes)
      * @param App $app
@@ -47,7 +48,7 @@ class Module
      */
     public function initMiddleware(App $app)
     {
-
+    
     }
 
     /**
@@ -100,15 +101,15 @@ class Module
                 $this->put('/{id:[0-9]+}', '\MartynBiz\Slim\Modules\Blog\Controller\Admin\TagsController:update')->setName('admin_tags_update');
                 $this->delete('/{id:[0-9]+}', '\MartynBiz\Slim\Modules\Blog\Controller\Admin\TagsController:delete')->setName('admin_tags_delete');
 
-            })->add( new Middleware\RoleAccess($this->getContainer(), [ User::ROLE_ADMIN ]) );
+            })->add( new \MartynBiz\Slim\Modules\Auth\Middleware\RoleAccess($this->getContainer(), [ \MartynBiz\Slim\Modules\Auth\Model\User::ROLE_ADMIN ]) );
 
             // admin/articles routes
             $this->group('/data', function () {
 
                 $this->map(['GET', 'POST'], '/import', '\MartynBiz\Slim\Modules\Blog\Controller\Admin\DataController:import')->setName('admin_data_import');
 
-            })->add( new Middleware\RoleAccess($this->getContainer(), [ User::ROLE_ADMIN ]) );
+            })->add( new \MartynBiz\Slim\Modules\Auth\Middleware\RoleAccess($this->getContainer(), [ \MartynBiz\Slim\Modules\Auth\Model\User::ROLE_ADMIN ]) );
 
-        })->add( new Middleware\Auth( $container['auth'] ) ); // user must be authenticated
+        })->add( new \MartynBiz\Slim\Modules\Auth\Middleware\Auth( $container['auth'] ) ); // user must be authenticated
     }
 }
