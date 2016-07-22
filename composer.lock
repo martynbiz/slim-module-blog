@@ -4,48 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2acf1c1edc0d550365af737ccff43b52",
-    "content-hash": "5ad41da817b0f5073be35539cc26e8c2",
-    "packages": [
-        {
-            "name": "martynbiz/slim-module-auth",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/martynbiz/slim-module-auth.git",
-                "reference": "ca5b1682622d3dc42a2dd930a34876dfd8479ffa"
-            },
-            "require": {
-                "martynbiz/slim-module-auth": "dev-master",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.8.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MartynBiz\\Slim\\Modules\\Auth\\": "Auth/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Martyn Bissett",
-                    "email": "martynbissett@yahoo.co.uk",
-                    "homepage": "http://martyn.biz",
-                    "role": "Developer"
-                }
-            ],
-            "keywords": [
-                "modules",
-                "slim"
-            ],
-            "time": "2016-07-22 08:42:31"
-        }
-    ],
+    "hash": "f2b14acb0cc229a5fa8dc82defcc15b8",
+    "content-hash": "bfaedf92845f1dbf989df845fadebdd4",
+    "packages": [],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
@@ -1153,9 +1114,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "martynbiz/slim-module-auth": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
