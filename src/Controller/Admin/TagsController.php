@@ -4,9 +4,12 @@ namespace MartynBiz\Slim\Module\Blog\Controller\Admin;
 use MartynBiz\Slim\Module\Blog\Model\Tag;
 use MartynBiz\Slim\Module\Blog\Exception\PermissionDenied as PermissionDeniedException;
 use MartynBiz\Slim\Module\Blog\Controller\BaseController;
+use MartynBiz\Slim\Module\Core\Traits;
 
 class TagsController extends BaseController
 {
+    use Traits\Pagination;
+
     public function index($request, $response, $args)
     {
         // get tags

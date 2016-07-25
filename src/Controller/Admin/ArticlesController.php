@@ -5,11 +5,13 @@ use MartynBiz\Mongo\Mongo;
 use MartynBiz\Slim\Module\Blog\Model\Article;
 use MartynBiz\Slim\Module\Blog\Model\Photo;
 use MartynBiz\Slim\Module\Blog\Exception\PermissionDenied as PermissionDeniedException;
-
+use MartynBiz\Slim\Module\Core\Traits;
 use MartynBiz\Slim\Module\Blog\Controller\BaseController;
 
 class ArticlesController extends BaseController
 {
+    use Traits\Pagination;
+
     public function index($request, $response, $args)
     {
         $container = $this->getContainer();

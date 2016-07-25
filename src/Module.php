@@ -63,11 +63,11 @@ class Module implements ModuleInterface
     {
         $container = $app->getContainer();
 
-        $app->get('/', '\MartynBiz\Slim\Module\Blog\Controller\IndexController:index')->setName('home');
+        // $app->get('/', '\MartynBiz\Slim\Module\Blog\Controller\IndexController:index')->setName('home');
 
-        // TODO move these to another module
-        $app->get('/portfolio', '\MartynBiz\Slim\Module\Blog\Controller\ArticlesController:portfolio')->setName('portfolio');
-        $app->get('/contact', '\MartynBiz\Slim\Module\Blog\Controller\ArticlesController:contact')->setName('contact');
+        // // TODO move these to another module
+        // $app->get('/portfolio', '\MartynBiz\Slim\Module\Blog\Controller\ArticlesController:portfolio')->setName('portfolio');
+        // $app->get('/contact', '\MartynBiz\Slim\Module\Blog\Controller\ArticlesController:contact')->setName('contact');
 
         $app->group('/articles', function () {
             $this->get('', '\MartynBiz\Slim\Module\Blog\Controller\ArticlesController:index')->setName('articles');
