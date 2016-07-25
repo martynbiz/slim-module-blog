@@ -114,4 +114,13 @@ class Module implements ModuleInterface
 
         })->add( new Auth\Middleware\Auth( $container['auth'] ) ); // user must be authenticated
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function copyFiles($dest)
+    {
+        $src = __DIR__ . '/../files/*';
+        shell_exec("cp -rn $src $dest");
+    }
 }
