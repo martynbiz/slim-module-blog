@@ -123,4 +123,19 @@ class Module implements ModuleInterface
         $src = __DIR__ . '/../files/*';
         shell_exec("cp -rn $src $dest");
     }
+
+    /**
+     * Removes files from the project tree
+     * @param string $dest The root of the project
+     * @return void
+     */
+    public function removeFiles($dest)
+    {
+        if (file_exists("$dest/src/autoload/settings.martynbiz-blog.php")) {
+            shell_exec("rm $dest/src/autoload/settings.martynbiz-blog.php");
+        }
+        if (file_exists("$dest/templates/martynbiz-blog")) {
+            shell_exec("rm -rf $dest/templates/martynbiz-blog");
+        }
+    }
 }
