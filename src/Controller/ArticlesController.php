@@ -28,7 +28,7 @@ class ArticlesController extends BaseController
 
         $articles = $container->get('blog.model.article')->find($query, $options);
 
-        $this->render('martynbiz-blog/articles/index', compact('articles'));
+        $this->render('martynbiz-blog::articles/index', compact('articles'));
     }
 
     public function show($request, $response, $args)
@@ -45,6 +45,6 @@ class ArticlesController extends BaseController
             'id' => [ '$ne' => $article->id ],
         ], [ 'limit' => 5 ]);
 
-        $this->render('martynbiz-blog/articles/show', compact('article', 'otherArticles'));
+        $this->render('martynbiz-blog::articles/show', compact('article', 'otherArticles'));
     }
 }

@@ -26,7 +26,7 @@ class ArticlesController extends BaseController
         $path = $container->get('router')->pathFor('admin_articles');
         $pageInfo = $this->getPageInfo($total, $path, $options);
 
-        return $this->render('martynbiz-blog/admin/articles/index', compact('articles', 'pageInfo'));
+        return $this->render('martynbiz-blog::admin/articles/index', compact('articles', 'pageInfo'));
     }
 
     /**
@@ -46,7 +46,7 @@ class ArticlesController extends BaseController
             throw new PermissionDeniedException('Permission denied to view this article.');
         }
 
-        return $this->render('martynbiz-blog/admin/articles/show', compact('article', 'tags'));
+        return $this->render('martynbiz-blog::admin/articles/show', compact('article', 'tags'));
     }
 
     /**
@@ -106,7 +106,7 @@ class ArticlesController extends BaseController
         // article to attach to
         $container->get('session')->set('current_article_id', $id);
 
-        return $this->render('martynbiz-blog/admin/articles/edit', compact('article', 'tags'));
+        return $this->render('martynbiz-blog::admin/articles/edit', compact('article', 'tags'));
     }
 
     /**

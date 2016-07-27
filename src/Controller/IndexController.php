@@ -26,16 +26,16 @@ class IndexController extends BaseController
         // }
 
 
-        $this->render('martynbiz-blog/index/index', compact('articles', 'carouselPhotos'));
+        $this->render('martynbiz-blog::index/index', compact('articles', 'carouselPhotos'));
     }
 
     public function portfolio($request, $response, $args)
     {
-        return $this->render('martynbiz-blog/index/portfolio');
+        return $this->render('martynbiz-blog::index/portfolio');
     }
 
     public function contact($request, $response, $args)
     {
-        return $this->render('martynbiz-blog/index/contact');
+        return $this->render('martynbiz-blog::index/contact');
     }
 }

@@ -21,12 +21,12 @@ class TagsController extends BaseController
         $path = $this->get('router')->pathFor('admin_tags');
         $pageInfo = $this->getPageInfo($total, $path, $options);
 
-        return $this->render('martynbiz-blog/admin/tags/index', compact('tags', 'pageInfo'));
+        return $this->render('martynbiz-blog::admin/tags/index', compact('tags', 'pageInfo'));
     }
 
     public function create($request, $response, $args)
     {
-        return $this->render('martynbiz-blog/admin/tags/create', array(
+        return $this->render('martynbiz-blog::admin/tags/create', array(
             'params' => $this->getPost(),
         ));
     }
@@ -58,7 +58,7 @@ class TagsController extends BaseController
         // include any params that may have been sent
         $tag->set( $this->getPost() );
 
-        return $this->render('martynbiz-blog/admin/tags/edit', array(
+        return $this->render('martynbiz-blog::admin/tags/edit', array(
             'tag' => $tag,
         ));
     }
