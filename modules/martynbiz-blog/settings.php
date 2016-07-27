@@ -5,7 +5,7 @@ return [
         // Renderer settings
         'renderer' => [
             'folders' => [
-                APPLICATION_PATH . '/modules/martynbiz-blog/templates',
+                'martynbiz-blog' => APPLICATION_PATH . '/modules/martynbiz-blog/templates',
             ],
         ],
 
